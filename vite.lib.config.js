@@ -30,12 +30,12 @@ export default defineConfig({
         },
         // 确保样式文件被正确打包
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'style.css') return 'style.css'
+          if (assetInfo.name === 'style.css') return 'jingshi-components.css'
           return assetInfo.name
         }
       }
     },
-    // 确保生成 sourcemap
+    // // 确保生成 sourcemap
     // sourcemap: true,
     // 确保生成 CSS 文件
     cssCodeSplit: false

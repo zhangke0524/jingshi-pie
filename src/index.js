@@ -1,6 +1,6 @@
 import PieChart from './components/pieChart.vue'
 import BarChart from './components/barChart.vue'
-import './style.css'
+import './styles/index.css'
 
 // 导出组件
 export { PieChart, BarChart }

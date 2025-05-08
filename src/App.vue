@@ -19,11 +19,12 @@ import { res as barRes } from './utils/mockBarData'
 <style scoped>
 .main-content-zk {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   justify-content: flex-start;
 }
 .list-item {
-  flex: 0 0 50%;
+  width: 50%;
+  flex: 1;
   height: 100%;
   background-color: #fff;
   border: 1px solid #ddd8d8;

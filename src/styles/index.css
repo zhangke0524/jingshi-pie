@@ -1,12 +1,12 @@
 /* 饼图组件样式 */
-.pie-chart-area {
+.jingshi-pie-chart-area {
   width: 100%;
   height: calc(100% - 50px);
   min-width: 200px;
   min-height: 200px;
 }
 
-.pie-chart-content {
+.jingshi-pie-chart-content {
   width: 100%;
   height: 50px;
   display: flex;
@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-.each-title {
+.jingshi-each-title {
   padding: 8px 0 8px 0;
   font-size: 16px;
   color: #414068;
@@ -23,17 +23,17 @@
 
 /* 响应式样式 */
 @media (max-width: 1366px) {
-  .each-title {
+  .jingshi-each-title {
     font-size: 14px;
   }
 }
 
 @media (min-width: 1367px) and (max-width: 1440px) {
-  .pie-chart-area {
+  .jingshi-pie-chart-area {
     width: 100%;
     height: calc(100% - 50px);
   }
-  .each-title {
+  .jingshi-each-title {
     font-size: 14px;
   }
 } 

@@ -32,8 +32,9 @@ app.use(jingshiComponents)
 </template>
 
 <script setup>
-import { PieChart } from '@zhangke-ui/jingshi-components'
-import { BarChart } from '@zhangke-ui/jingshi-components'
+// 全局注册后此处无需再次引入
+// import { PieChart } from '@zhangke-ui/jingshi-components'
+// import { BarChart } from '@zhangke-ui/jingshi-components'
 
 const chartData = [
   {

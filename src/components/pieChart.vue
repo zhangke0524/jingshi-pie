@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full" v-loading="isPieLoading">
-    <div class="pie-chart-content">
-      <div class="each-title">
+    <div class="jingshi-pie-chart-content">
+      <div class="jingshi-each-title">
         <SvgIcon
           icon-class="app-title"
           name="app-title"
@@ -18,7 +18,7 @@
         />
       </el-select>
     </div>
-    <div ref="echartPieRef" class="pie-chart-area"></div>
+    <div ref="echartPieRef" class="jingshi-pie-chart-area"></div>
   </div>
 </template>
 
@@ -262,23 +262,23 @@ onUnmounted(() => {
   width: 106px !important;
   margin-right: 5px !important;
 }
-.pie-chart-area {
+.jingshi-pie-chart-area {
   width: 100%;
   height: calc(100% - 50px);
-  min-width: 250px;
+  min-width: 200px;
   min-height: 200px;
 }
 .p5 {
   padding: 5px;
 }
 
-.each-title {
+.jingshi-each-title {
   padding: 8px 0 8px 0;
   font-size: 16px;
   color: #414068;
   font-weight: 800;
 }
-.pie-chart-content {
+.jingshi-pie-chart-content {
   width: 100%;
   height: 50px;
   display: flex;
@@ -295,7 +295,7 @@ onUnmounted(() => {
 
 /* 1366x768 */
 @media (max-width: 1366px) {
-  .each-title {
+  .jingshi-each-title {
     font-size: 14px;
   }
 }
@@ -305,11 +305,11 @@ onUnmounted(() => {
   :deep(.el-select__tags) {
     width: 110px !important;
   }
-  .pie-chart-area {
+  .jingshi-pie-chart-area {
     width: 100%;
     height: calc(100% - 50px);
   }
-  .each-title {
+  .jingshi-each-title {
     font-size: 14px;
   }
 }
