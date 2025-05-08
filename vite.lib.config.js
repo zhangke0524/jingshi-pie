@@ -12,8 +12,11 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
-      name: 'PieChartComponent',
-      fileName: (format) => `pie-chart-component.${format}.js`
+      name: 'jingshiComponents',
+      // 软件包输出文件的名称
+      fileName: (format) => `jingshi-components.${format}.js`,
+      // 软件包输出 CSS 文件的名称
+      cssFileNames: (format) => `jingshi-components.${format}.css`
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
@@ -33,7 +36,7 @@ export default defineConfig({
       }
     },
     // 确保生成 sourcemap
-    sourcemap: true,
+    // sourcemap: true,
     // 确保生成 CSS 文件
     cssCodeSplit: false
   }

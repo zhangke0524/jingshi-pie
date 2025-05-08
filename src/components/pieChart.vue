@@ -265,7 +265,7 @@ onUnmounted(() => {
 .pie-chart-area {
   width: 100%;
   height: calc(100% - 50px);
-  min-width: 200px;
+  min-width: 250px;
   min-height: 200px;
 }
 .p5 {
@@ -287,7 +287,7 @@ onUnmounted(() => {
 }
 .w-full {
   width: 100%;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 .h-full {
   height: 100%;

@@ -1,11 +1,11 @@
 # Pie Chart Component
 
-A Vue 3 pie chart component based on ECharts.
+A Vue 3 pie chart component based on jingshi.
 
 ## Installation
 
 ```bash
-npm install @jing-shi/pie-chart-component
+npm install @zhangke-ui/jingshi-components
 ```
 
 ## Usage
@@ -16,11 +16,11 @@ npm install @jing-shi/pie-chart-component
 import { createApp } from 'vue'
 
 // main.ts
-import PieChartComponent from '@jing-shi/pie-chart-component'
-import '@jing-shi/pie-chart-component/style.css'
+import jingshiComponents from '@zhangke-ui/jingshi-components'
+import '@zhangke-ui/jingshi-components/style.css'
 
 const app = createApp(App)
-app.use(PieChartComponent)
+app.use(jingshiComponents)
 ```
 
 ### Local Registration
@@ -28,11 +28,12 @@ app.use(PieChartComponent)
 ```vue
 <template>
   <pie-chart :data="chartData" :title="'My Chart'" />
+  <pie-chart :data="chartData" :title="'My Chart'" />
 </template>
 
 <script setup>
-import { PieChart } from '@jing-shi/pie-chart-component'
-import '@jing-shi/pie-chart-component/style.css'
+import { PieChart } from '@zhangke-ui/jingshi-components'
+import { BarChart } from '@zhangke-ui/jingshi-components'
 
 const chartData = [
   {
@@ -50,6 +51,7 @@ const chartData = [
   }
   // ... more data
 ]
+
 </script>
 ```
 

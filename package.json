@@ -1,16 +1,19 @@
 {
-  "name": "@jing-shi/pie-chart-component",
-  "version": "1.0.6",
+  "name": "@zhangke-ui/jingshi-components",
+  "version": "1.0.2",
   "type": "module",
-  "description": "A Vue 3 pie chart component",
-  "main": "dist/pie-chart-component.umd.js",
-  "module": "dist/pie-chart-component.es.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "A Vue 3 component library",
+  "main": "dist/jingshi-components.umd.js",
+  "module": "dist/jingshi-components.es.js",
   "exports": {
     ".": {
-      "import": "./dist/pie-chart-component.es.js",
-      "require": "./dist/pie-chart-component.umd.js"
+      "import": "./dist/jingshi-components.es.js",
+      "require": "./dist/jingshi-components.umd.js"
     },
-    "./style.css": "./dist/pie-chart-component.css"
+    "./style.css": "./dist/jingshi-components.css"
   },
   "files": [
     "dist"
@@ -43,6 +46,7 @@
   "keywords": [
     "vue",
     "pie-chart",
+    "bar-chart",
     "echarts",
     "component"
   ],
