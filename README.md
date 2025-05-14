@@ -1,6 +1,6 @@
-# Pie Chart Component
+# Jingshi Components
 
-A Vue 3 pie chart component based on jingshi.
+A Vue 3 component library based on jingshi.
 
 ## Installation
 
@@ -10,7 +10,7 @@ npm install @zhangke-ui/jingshi-components
 
 ## Usage
 
-### Global Registration
+### Global Registration (Recommended)
 
 ```js
 import { createApp } from 'vue'
@@ -23,18 +23,55 @@ const app = createApp(App)
 app.use(jingshiComponents)
 ```
 
-### Local Registration
+After global registration, you can use components in your templates in two ways:
 
+1. Using PascalCase (recommended):
 ```vue
 <template>
-  <pie-chart :data="chartData" :title="'My Chart'" />
-  <pie-chart :data="chartData" :title="'My Chart'" />
+  <PieChart :data="chartData" :title="'My Chart'" />
+  <BarChart :data="chartData" :title="'My Chart'" />
 </template>
 
 <script setup>
-// 全局注册后此处无需再次引入
-// import { PieChart } from '@zhangke-ui/jingshi-components'
-// import { BarChart } from '@zhangke-ui/jingshi-components'
+// No need to import components
+const chartData = [
+  {
+    countResults: [
+      {
+        algorithmName: "Category 1",
+        countNumber: 100
+      },
+      {
+        algorithmName: "Category 2",
+        countNumber: 200
+      }
+    ],
+    dateType: "day"
+  }
+]
+</script>
+```
+
+2. Using kebab-case:
+```vue
+<template>
+  <pie-chart :data="chartData" :title="'My Chart'" />
+  <bar-chart :data="chartData" :title="'My Chart'" />
+</template>
+```
+
+### Local Registration (Optional)【备注：暂不支持，请使用全局注册】
+
+If you prefer to import components individually:
+
+```vue
+<template>
+  <PieChart :data="chartData" :title="'My Chart'" />
+  <BarChart :data="chartData" :title="'My Chart'" />
+</template>
+
+<script setup>
+import { PieChart, BarChart } from '@zhangke-ui/jingshi-components'
 
 const chartData = [
   {
@@ -50,9 +87,7 @@ const chartData = [
     ],
     dateType: "day"
   }
-  // ... more data
 ]
-
 </script>
 ```
 

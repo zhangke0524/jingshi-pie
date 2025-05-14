@@ -38,6 +38,8 @@ export default defineConfig({
     // // 确保生成 sourcemap
     // sourcemap: true,
     // 确保生成 CSS 文件
-    cssCodeSplit: false
+    cssCodeSplit: false,
+    minify: false,
+    sourcemap: true
   }
 }) 

@@ -6,9 +6,19 @@ import './styles/index.css'
 export { PieChart, BarChart }
 
 // 导出默认组件
+const components = {
+  PieChart,
+  BarChart
+}
+
 export default {
   install: (app) => {
-    app.component('PieChart', PieChart)
-    app.component('BarChart', BarChart)
+    // 注册所有组件
+    Object.entries(components).forEach(([name, component]) => {
+      // 同时注册 PascalCase 和 kebab-case 格式
+      app.component(name, component) // 注册为 PascalCase
+      const kebabName = name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
+      app.component(kebabName, component) // 注册为 kebab-case
+    })
   }
 } 

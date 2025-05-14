@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full" v-loading="isPieLoading">
+  <div class="w-full h-full" v-loading="isPieLoading" v-bind="$attrs">
     <div class="jingshi-pie-chart-content">
       <div class="jingshi-each-title">
         <SvgIcon
@@ -7,9 +7,13 @@
           name="app-title"
           style="height: 16px; width: 16px"
         />
-        <span>{{ props.title }}</span>
+        <span>{{ title }}</span>
       </div>
-      <el-select v-model="timeFive" placeholder="请选择" @change="changeTimeFive">
+      <el-select
+        v-model="timeFive"
+        placeholder="请选择"
+        @change="changeTimeFive"
+      >
         <el-option
           v-for="item in timeFiveList"
           :key="item.value"
@@ -22,7 +26,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, onUnmounted, ref, reactive, computed } from "vue";
 // import { GetAlarmStatistics } from '@/api/first-page';
 import * as echarts from "echarts";
@@ -30,22 +34,27 @@ import { pieColorList } from "@/utils/constants";
 // import { useI18n } from 'vue-i18n';
 // const { t } = useI18n();
 
-const props = defineProps({
-  // 饼图数据
-  data: {
-    type: Array,
-    default: () => [],
-  },
-  // 饼图颜色
-  colorList: {
-    type: Array,
-    default: pieColorList,
-  },
-  // 饼图标题
-  title: {
-    type: String,
-    default: "",
-  },
+interface ChartData {
+  countResults: Array<{
+    algorithmName: string;
+    countNumber: number;
+  }>;
+  dateType: string;
+}
+
+const props = withDefaults(defineProps<{
+  data: ChartData[];
+  colorList?: string[];
+  title?: string;
+}>(), {
+  data: () => [],
+  colorList: () => pieColorList,
+  title: ''
+});
+
+// 启用属性继承
+defineOptions({
+  inheritAttrs: true
 });
 
 // 根据当前的主题，设置饼图的颜色
@@ -55,10 +64,10 @@ const timeFive = ref("day");
 // 报警事件统计 - 饼图
 let isPieLoading = ref(false);
 // 饼图的后端接口返回的全部数据
-const currentPieDataAll = ref(null);
-const echartPieRef = ref(null);
-let myPieChart = ref(null);
-const pieData = ref([]);
+const currentPieDataAll = ref<ChartData[] | null>(null);
+const echartPieRef = ref<HTMLElement | null>(null);
+let myPieChart: echarts.ECharts | null = null;
+const pieData = ref<Array<{ name: string; value: number }>>([]);
 const state = reactive({
   pieOption: {
     tooltip: {
@@ -236,22 +245,26 @@ const initData = () => {
   currentPieDataAll.value = props.data;
   // 获取数据并更新图表
   getPieData(currentPieDataAll.value);
-}
+};
 
 onMounted(() => {
   // 初始化饼图
   myPieChart = echarts.init(echartPieRef.value);
   // 为饼图添加resize事件
   window.addEventListener("resize", resizePie);
-  
-  initData()
-  
+
+  initData();
+
   setTimeout(() => {
     resizePie();
   }, 600);
 });
 
 onUnmounted(() => {
+  if (myPieChart) {
+    myPieChart.dispose();
+    myPieChart = null;
+  }
   window.removeEventListener("resize", resizePie);
 });
 </script>
@@ -287,7 +300,6 @@ onUnmounted(() => {
 }
 .w-full {
   width: 100%;
-  /* background-color: aquamarine; */
 }
 .h-full {
   height: 100%;

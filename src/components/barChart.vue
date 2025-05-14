@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full" v-bind="$attrs">
     <div class="main-bar p5">
       <div class="each-title">
         <SvgIcon name="app-title" style="height: 16px; width: 16px" />
-        <span>{{ props.title }}</span>
+        <span>{{ title }}</span>
       </div>
       <el-select
         v-model="barTimeFive"
@@ -40,22 +40,27 @@ import { ref, onMounted, onUnmounted, reactive, computed } from "vue";
 import * as echarts from "echarts";
 import { pieColorList } from "@/utils/constants";
 
-const props = defineProps({
-  // 饼图数据
-  data: {
-    type: Array,
-    default: () => [],
-  },
-  // 饼图颜色
-  colorList: {
-    type: Array,
-    default: pieColorList,
-  },
-  // 饼图标题
-  title: {
-    type: String,
-    default: "",
-  },
+interface ChartData {
+  countResults: Array<{
+    algorithmName: string;
+    countNumber: number;
+  }>;
+  dateType: string;
+}
+
+const props = withDefaults(defineProps<{
+  data: ChartData[];
+  colorList?: string[];
+  title?: string;
+}>(), {
+  data: () => [],
+  colorList: () => pieColorList,
+  title: ''
+});
+
+// 启用属性继承
+defineOptions({
+  inheritAttrs: true
 });
 
 // 根据当前的主题，设置饼图的颜色
@@ -63,11 +68,11 @@ const colorList = props.colorList;
 
 const barTimeFive = ref("day");
 // 柱状图(摄像机频发top10)接口返回的全部数据
-const currentBarDataAll = ref(null);
-const barData = ref([]);
-const barNameList = ref([]);
-const echartBarRef = ref(null);
-let myBarChart = ref(null);
+const currentBarDataAll = ref<ChartData[] | null>(null);
+const barData = ref<number[]>([]);
+const barNameList = ref<string[]>([]);
+const echartBarRef = ref<HTMLElement | null>(null);
+let myBarChart: echarts.ECharts | null = null;
 
 const timeFiveList = computed(() => {
   return [
@@ -237,16 +242,18 @@ const resizeBar = () => {
 };
 
 onMounted(() => {
-
   // 初始化柱状图
   myBarChart = echarts.init(echartBarRef.value);
   window.addEventListener("resize", resizeBar);
-  // myBarChart.setOption(state.barOption, true);
 
   initBarChart();
 });
 
 onUnmounted(() => {
+  if (myBarChart) {
+    myBarChart.dispose();
+    myBarChart = null;
+  }
   window.removeEventListener("resize", resizeBar);
 });
 </script>
