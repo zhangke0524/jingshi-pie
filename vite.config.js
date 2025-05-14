@@ -27,6 +27,33 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],
+    // 启用符号链接解析
+    preserveSymlinks: true,
+  },
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, "src/index.js"),
+      name: "jingshiComponents",
+      // 软件包输出文件的名称
+      fileName: (format) => `jingshi-components.${format}.js`,
+      // 软件包输出 CSS 文件的名称
+      cssFileNames: (format) => `jingshi-components.${format}.css`
+    },
+    rollupOptions: {
+      external: ['vue', 'echarts', 'element-plus'],
+      output: {
+        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+        globals: {
+          vue: "Vue",
+          echarts: "echarts",
+          'element-plus': 'ElementPlus'
+        },
+        // // 确保样式文件被正确打包
+        // assetFileNames: (assetInfo) => {
+        //   if (assetInfo.name === 'style.css') return 'jingshi-components.css'
+        // }
+      }
+    },
   },
   // server: {
   //   port: 8030,
