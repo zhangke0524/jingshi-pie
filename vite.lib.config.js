@@ -1,9 +1,18 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+import svgLoader from 'vite-svg-loader'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    svgLoader({
+      svgoConfig: {
+        multipass: true
+      },
+      defaultImport: 'component'
+    }),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
@@ -24,10 +33,16 @@ export default defineConfig({
           echarts: 'echarts',
           'element-plus': 'ElementPlus'
         },
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'style.css') return 'jingshi-components.css'
-          return assetInfo.name
-        }
+        // assetFileNames: (assetInfo) => {
+        //   if (assetInfo.name === 'style.css') return 'jingshi-components.css'
+        //   if (assetInfo.name.endsWith('.svg')) {
+        //     return 'assets/icons/[name][extname]'
+        //   }
+        //   return 'assets/[name]-[hash][extname]'
+        // },
+        // exports: 'named',
+        // preserveModules: true,
+        // preserveModulesRoot: 'src'
       }
     },
     cssCodeSplit: false,

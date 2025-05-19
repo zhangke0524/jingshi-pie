@@ -21,7 +21,12 @@ export default defineConfig({
     //   iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
     //   symbolId: "icon-[name]",
     // }),
-    svgLoader(),
+    svgLoader({
+      svgoConfig: {
+        multipass: true
+      },
+      defaultImport: 'component'
+    }),
   ],
   resolve: {
     alias: {
@@ -50,9 +55,11 @@ export default defineConfig({
           echarts: "echarts",
           'element-plus': 'ElementPlus'
         },
-        // // 确保样式文件被正确打包
         // assetFileNames: (assetInfo) => {
-        //   if (assetInfo.name === 'style.css') return 'jingshi-components.css'
+        //   if (assetInfo.name.endsWith('.svg')) {
+        //     return 'assets/icons/[name][extname]'
+        //   }
+        //   return 'assets/[name]-[hash][extname]'
         // }
       }
     },
