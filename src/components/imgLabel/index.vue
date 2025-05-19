@@ -8,7 +8,7 @@
   >
     <template #header="{ titleId, titleClass }">
       <h4 :id="titleId" :class="titleClass">
-        <!-- <AppTitle :title="'区域标注'"></AppTitle> -->
+        <AppTitle :title="'区域标注'"></AppTitle>
       </h4>
       <div class="explain-text">{{ explianText }}</div>
       <el-button :disabled="confirmLoading" @click="closeModal" class="w-180"
@@ -65,21 +65,21 @@
           </div>
           <!-- 图片标注区域 -->
           <div
-            class="annotate-area h-[calc(100vh-160px)] bg-[#f1f1f1] mt-2 min-h-[500px]"
+            class="annotate-area"
             :id="selector"
             ref="annotateRef"
           ></div>
         </div>
         <div
-          class="w-[1px] h-[calc(100vh-110px)] border-0 border-r-[1px] border-solid border-[#ecf0f4] ml-2"
+          class="annotate-area-line"
         ></div>
-        <div class="min-w-[200px] p-2 w-[15%] max-h-[calc(100vh-110px)]">
-          <div v-if="!currentGroups.length" class="w-full text-center pt-20">
+        <div class="annotate-area-right">
+          <div v-if="!currentGroups.length" class="w-full text-center pt-80">
             <el-empty :description="'暂无数据'" />
           </div>
           <div
             v-else
-            class="list-wrap max-h-[calc(100vh-150px)] overflow-y-scroll w-full"
+            class="list-wrap"
           >
             <template v-for="(item, index) in labelObj" :key="`label_${index}`">
               <div
@@ -819,6 +819,18 @@ onUnmounted(() => {
   font-size: 12px;
   color: red;
 }
+.text-right {
+  text-align: right;
+}
+.w-full {
+  width: 100%;
+}
+.text-center {
+  text-align: center;
+}
+.pt-80 {
+  padding-top: 80px;
+}
 /* -top-[20px] -left-0 -right-0 border-0 border-t-[1px] border-solid border-[#ecf0f4] w-full */
 .main-content {
   top: -20px;
@@ -831,5 +843,31 @@ onUnmounted(() => {
 .img-content-left {
   max-width: 85%;
   min-width: 500px;
+}
+.annotate-area {
+  height: calc(100vh - 160px);
+  background-color: #f1f1f1;
+  margin-top: 8px;
+  min-height: 500px;
+}
+/* w-[1px] h-[calc(100vh-110px)] border-0 border-r-[1px] border-solid border-[#ecf0f4] ml-2 */
+.annotate-area-line {
+  width: 1px;
+  height: calc(100vh - 110px);
+  border: 0;
+  border-right: 1px solid #ecf0f4;
+  margin-left: 8px;
+}
+.annotate-area-right {
+  width: 15%;
+  max-height: calc(100vh - 110px);
+  min-width: 200px;
+  padding: 8px;
+}
+/* max-h-[calc(100vh-150px)] overflow-y-scroll w-full */
+.list-wrap {
+  max-height: calc(100vh - 150px);
+  overflow-y: scroll;
+  width: 100%;
 }
 </style>

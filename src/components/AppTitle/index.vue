@@ -1,6 +1,6 @@
 <template>
   <span class="app-title" ref="topLeftTitleRef" style="min-width: 90px" :style="{ width: `${props.width}px` }">
-    <SvgIcon icon-class="app-title" style="height: 16px; width: 16px" />
+    <SvgIcon name="app-title" style="height: 16px; width: 16px" />
     {{ title }}
   </span>
 </template>
