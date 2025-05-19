@@ -2,14 +2,16 @@ import PieChart from './components/pieChart.vue'
 import BarChart from './components/barChart.vue'
 import './styles/index.css'
 import { renderImgWithData } from './utils/renderImgWithData'
+import ImgLabel from './components/imgLabel/index.vue'
 
 // 导出组件
-export { PieChart, BarChart, renderImgWithData }
+export { PieChart, BarChart, renderImgWithData, ImgLabel }
 
 // 导出默认组件
 const components = {
   PieChart,
-  BarChart
+  BarChart,
+  ImgLabel
 }
 
 export default {
