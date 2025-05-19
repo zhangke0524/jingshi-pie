@@ -4,7 +4,8 @@ import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+// import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+import svgLoader from "vite-svg-loader";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,10 +17,11 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
-    createSvgIconsPlugin({
-      iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
-      symbolId: "icon-[name]",
-    }),
+    // createSvgIconsPlugin({
+    //   iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
+    //   symbolId: "icon-[name]",
+    // }),
+    svgLoader(),
   ],
   resolve: {
     alias: {

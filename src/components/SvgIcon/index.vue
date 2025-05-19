@@ -1,11 +1,17 @@
+<!-- src/components/SvgIcon.vue -->
 <template>
-  <svg class="svg-icon" aria-hidden="true">
-    <use :xlink:href="`#icon-${name}`" />
-  </svg>
+  <component :is="iconComponent" class="svg-icon" />
 </template>
 
 <script setup lang="ts">
-defineProps<{ name: string }>()
+import { computed } from 'vue'
+import icons from '@/assets/icons' // 自动导入所有 SVG
+
+const props = defineProps<{
+  name: string
+}>()
+
+const iconComponent = computed(() => icons[props.name])
 </script>
 
 <style scoped>
@@ -16,4 +22,3 @@ defineProps<{ name: string }>()
   fill: currentColor;
 }
 </style>
-

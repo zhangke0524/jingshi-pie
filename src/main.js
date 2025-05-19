@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import './style.css'
 import './main.css'
 import App from './App.vue'
-import 'virtual:svg-icons-register'
+// import 'virtual:svg-icons-register'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 
