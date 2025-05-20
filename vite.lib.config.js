@@ -26,23 +26,12 @@ export default defineConfig({
       cssFileNames: (format) => `jingshi-components.${format}.css`
     },
     rollupOptions: {
-      external: ['vue', 'echarts', 'element-plus'],
+      // 只将 Vue 设置为外部依赖，其他依赖都打包进库中
+      external: ['vue'],
       output: {
         globals: {
-          vue: 'Vue',
-          echarts: 'echarts',
-          'element-plus': 'ElementPlus'
+          vue: 'Vue'
         },
-        // assetFileNames: (assetInfo) => {
-        //   if (assetInfo.name === 'style.css') return 'jingshi-components.css'
-        //   if (assetInfo.name.endsWith('.svg')) {
-        //     return 'assets/icons/[name][extname]'
-        //   }
-        //   return 'assets/[name]-[hash][extname]'
-        // },
-        // exports: 'named',
-        // preserveModules: true,
-        // preserveModulesRoot: 'src'
       }
     },
     cssCodeSplit: false,

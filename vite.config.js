@@ -47,22 +47,16 @@ export default defineConfig({
       cssFileNames: (format) => `jingshi-components.${format}.css`
     },
     rollupOptions: {
-      external: ['vue', 'echarts', 'element-plus'],
+      external: ['vue'],
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
-          vue: "Vue",
-          echarts: "echarts",
-          'element-plus': 'ElementPlus'
+          vue: "Vue"
         },
-        // assetFileNames: (assetInfo) => {
-        //   if (assetInfo.name.endsWith('.svg')) {
-        //     return 'assets/icons/[name][extname]'
-        //   }
-        //   return 'assets/[name]-[hash][extname]'
-        // }
       }
     },
+    cssCodeSplit: false,
+    minify: false,
   },
   // server: {
   //   port: 8030,
