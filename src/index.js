@@ -1,7 +1,6 @@
 import PieChart from './components/pieChart.vue'
 import BarChart from './components/barChart.vue'
 import './styles/index.css'
-import 'element-plus/dist/index.css'
 import { renderImgWithData } from './utils/renderImgWithData'
 import ImgLabel from './components/imgLabel/index.vue'
 

@@ -17,7 +17,7 @@ import { createApp } from 'vue'
 
 // main.ts
 import jingshiComponents from '@zhangke-ui/jingshi-components'
-import '@zhangke-ui/jingshi-components/style.css'
+import '@zhangke-ui/jingshi-components/dist/style.css'
 
 const app = createApp(App)
 app.use(jingshiComponents)

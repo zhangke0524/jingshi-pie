@@ -41,10 +41,8 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.js"),
       name: "jingshiComponents",
-      // 软件包输出文件的名称
       fileName: (format) => `jingshi-components.${format}.js`,
-      // 软件包输出 CSS 文件的名称
-      cssFileNames: (format) => `jingshi-components.${format}.css`
+      cssFileNames: 'jingshi-components.css'
     },
     rollupOptions: {
       external: ['vue'],
