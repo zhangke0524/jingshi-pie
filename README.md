@@ -1,31 +1,40 @@
 # Jingshi Components
 
-A Vue 3 component library based on jingshi.
+基于 Vue 3 的组件库。
 
-## Installation
+## 安装
 
 ```bash
 npm install @zhangke-ui/jingshi-components
 ```
 
-## Usage
+## 使用方式
 
-### Global Registration (Recommended)
+### 1. 引入样式（必需）
+
+首先，在项目的主入口文件（main.ts 或 main.js）中引入样式：
 
 ```js
-import { createApp } from 'vue'
-
-// main.ts
-import jingshiComponents from '@zhangke-ui/jingshi-components'
+// main.ts or main.js
 import '@zhangke-ui/jingshi-components/dist/style.css'
+```
+
+### 2. 选择组件引入方式
+
+#### 全局注册（推荐）
+
+```js
+// main.ts or main.js
+import { createApp } from 'vue'
+import jingshiComponents from '@zhangke-ui/jingshi-components'
 
 const app = createApp(App)
 app.use(jingshiComponents)
 ```
 
-After global registration, you can use components in your templates in two ways:
+全局注册后，您可以在模板中使用以下两种方式：
 
-1. Using PascalCase (recommended):
+1. 使用 PascalCase 命名（推荐）：
 ```vue
 <template>
   <PieChart :data="chartData" :title="'My Chart'" />
@@ -33,7 +42,7 @@ After global registration, you can use components in your templates in two ways:
 </template>
 
 <script setup>
-// No need to import components
+// 无需导入组件
 const chartData = [
   {
     countResults: [
@@ -52,7 +61,7 @@ const chartData = [
 </script>
 ```
 
-2. Using kebab-case:
+2. 使用 kebab-case 命名：
 ```vue
 <template>
   <pie-chart :data="chartData" :title="'My Chart'" />
@@ -60,9 +69,9 @@ const chartData = [
 </template>
 ```
 
-### Local Registration (Optional)【备注：暂不支持，请使用全局注册】
+#### 按需引入
 
-If you prefer to import components individually:
+您也可以在组件中单独引入需要的组件：
 
 ```vue
 <template>
@@ -72,6 +81,7 @@ If you prefer to import components individually:
 
 <script setup>
 import { PieChart, BarChart } from '@zhangke-ui/jingshi-components'
+import '@zhangke-ui/jingshi-components/dist/style.css'
 
 const chartData = [
   {
@@ -91,14 +101,14 @@ const chartData = [
 </script>
 ```
 
-## Props
+## 组件属性
 
-| Prop | Type | Default | Description |
+| 属性名 | 类型 | 默认值 | 说明 |
 |------|------|---------|-------------|
-| data | Array | [] | Chart data array |
-| title | String | '' | Chart title |
-| colorList | Array | default colors | Custom color list for chart |
+| data | Array | [] | 图表数据数组 |
+| title | String | '' | 图表标题 |
+| colorList | Array | 默认颜色 | 自定义图表颜色列表 |
 
-## License
+## 许可证
 
 MIT

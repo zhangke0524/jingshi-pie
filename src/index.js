@@ -4,14 +4,6 @@ import './styles/index.css'
 import { renderImgWithData } from './utils/renderImgWithData'
 import ImgLabel from './components/imgLabel/index.vue'
 
-// 导出所有组件和函数
-export {
-  PieChart,
-  BarChart,
-  ImgLabel,
-  renderImgWithData
-}
-
 // 导出默认组件
 const components = {
   PieChart,
@@ -30,10 +22,17 @@ const install = (app) => {
   })
 }
 
-export default {
-  install,
+// 导出所有组件和函数
+export {
   PieChart,
   BarChart,
   ImgLabel,
+  renderImgWithData
+}
+
+// 默认导出
+export default {
+  install,
+  ...components,
   renderImgWithData
 } 

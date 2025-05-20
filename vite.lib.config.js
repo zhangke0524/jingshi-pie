@@ -39,7 +39,8 @@ export default defineConfig({
       output: {
         globals: {
           vue: 'Vue'
-        }
+        },
+        exports: 'named'
       }
     },
     cssCodeSplit: false,
