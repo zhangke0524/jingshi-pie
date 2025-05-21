@@ -51,11 +51,11 @@ export function renderImgWithData(imgUrl, points, algorithmName='', serviceName=
       );
       ctx.lineWidth = 3;
       ctx.strokeStyle = "red";
-
+      
       if (algorithmName && algorithmName === "安全通道占用") {
         ctx.font = "60px Arial";
         ctx.fillStyle = "red";
-        ctx.fillText("存在占用", 800, 80);
+        ctx.fillText("存在占用", 200, 80);
       }
 
       // 在当前图片的左下角绘制文字(仅人数异常检测算法)
