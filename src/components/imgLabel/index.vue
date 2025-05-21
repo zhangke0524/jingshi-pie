@@ -158,8 +158,11 @@ const props = defineProps({
     type: Number,
     default: 1,
   },
-  currentDetailData: {
-    type: Object,
+  // currentDetailData: {
+  //   type: Object,
+  // },
+  serviceName: {
+    type: String,
   },
   // 是否有厂区内这第4个工具栏，默认从视频中心/算法管理进入，有厂区内这个工具栏
   // 从离线识图进入，没有厂区内这个工具栏
@@ -176,7 +179,8 @@ const props = defineProps({
 });
 
 const explianText = computed(() => {
-  switch (props.currentDetailData?.serviceName) {
+  // switch (props.currentDetailData?.serviceName) {
+  switch (props.serviceName) {
     case "detectoccupy":
       return "请在图中标注【未被占用的安全通道】所在区域！";
     case "chl":
@@ -751,7 +755,8 @@ defineExpose({
 });
 
 onMounted(() => {
-  console.log(props.currentDetailData);
+  // console.log(props.currentDetailData);
+  console.log(props.serviceName);
   nextTick(() => {
     // init();
     window.addEventListener("resize", resizeWin);
