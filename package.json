@@ -1,6 +1,6 @@
 {
   "name": "@zhangke-ui/jingshi-components",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -25,6 +25,8 @@
     "build:lib": "vite build --config vite.lib.config.js"
   },
   "peerDependencies": {
+    "echarts": "^5.0.0",
+    "element-plus": "^2.0.0",
     "vue": "^3.0.0"
   },
   "dependencies": {

@@ -33,7 +33,7 @@ import { renderImgWithData } from "./utils/renderImgWithData";
 import imgLabel from "./components/imgLabel/index.vue";
 
 const url =
-  "http://10.15.11.26:9000/detection/frame/20250423/10/34020000001110000003/34020000001320000023/20250423104548161-0868deb4.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=admin%2F20250519%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250519T025925Z&X-Amz-Expires=1800&X-Amz-SignedHeaders=host&X-Amz-Signature=43b7f3c2f8028ece11f41fc1a02af9e41ddd3c9ba1c4af1953472bf728baf54a";
+  "http://e.hiphotos.baidu.com/image/pic/item/a1ec08fa513d2697e542494057fbb2fb4316d81e.jpg";
 const points =
   "[[1047.0,299.0,1244.0,598.0],[1170.0,138.0,1265.0,259.0],[887.0,385.0,978.0,523.0]]";
 const serviceName = "ppcount";

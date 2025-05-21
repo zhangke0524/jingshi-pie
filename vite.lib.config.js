@@ -27,10 +27,12 @@ export default defineConfig({
     },
     rollupOptions: {
       // 只将 Vue 设置为外部依赖，其他依赖都打包进库中
-      external: ['vue'],
+      external: ['vue', 'echarts', 'element-plus'],
       output: {
         globals: {
-          vue: 'Vue'
+          vue: 'Vue',
+          echarts: 'echarts',
+          'element-plus': 'ElementPlus'
         },
       }
     },

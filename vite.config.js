@@ -47,11 +47,13 @@ export default defineConfig({
       cssFileNames: (format) => `jingshi-components.${format}.css`
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'echarts', 'element-plus'],
       output: {
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
-          vue: "Vue"
+          vue: "Vue",
+          echarts: "echarts",
+          "element-plus": "ElementPlus"
         },
       }
     },
