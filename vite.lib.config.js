@@ -22,8 +22,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
       name: 'jingshiComponents',
-      fileName: (format) => `jingshi-components.${format}.js`,
-      cssFileNames: (format) => `jingshi-components.${format}.css`
+      fileName: (format) => `jingshi-components.${format}.js`
     },
     rollupOptions: {
       // 只将 Vue 设置为外部依赖，其他依赖都打包进库中
@@ -34,10 +33,11 @@ export default defineConfig({
           echarts: 'echarts',
           'element-plus': 'ElementPlus'
         },
+        assetFileNames: 'style.css'
       }
     },
     cssCodeSplit: false,
-    minify: false,
-    sourcemap: true
+    minify: true,
+    sourcemap: false
   }
 }) 

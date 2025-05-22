@@ -43,8 +43,6 @@ export default defineConfig({
       name: "jingshiComponents",
       // 软件包输出文件的名称
       fileName: (format) => `jingshi-components.${format}.js`,
-      // 软件包输出 CSS 文件的名称
-      cssFileNames: (format) => `jingshi-components.${format}.css`
     },
     rollupOptions: {
       external: ['vue', 'echarts', 'element-plus'],
@@ -55,10 +53,12 @@ export default defineConfig({
           echarts: "echarts",
           "element-plus": "ElementPlus"
         },
+        assetFileNames: 'style.css'
       }
     },
     cssCodeSplit: false,
-    minify: false,
+    minify: true,
+    sourcemap: false
   },
   // server: {
   //   port: 8030,
